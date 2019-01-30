@@ -1,0 +1,30 @@
+<h3>Registration</h3>
+<div class="containe">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-5">
+            <form action="/account/register" method="post">
+                <div class="form-group">
+                    <label for="email">Email address:</label>
+                    <input type="email" class="form-control" name="email" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="login">login:</label>
+                    <input type="text" class="form-control" name="login" id="name">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" name="password" id="pass">
+                </div>
+                <div class="form-group">
+                    <label for="sel1">family members</label>
+                    <select class="form-control" id="sel1" name="familyMembers">
+                        <option>Father</option>
+                        <option>Mother</option>
+                        <option>Child</option>
+                    </select>
+                    <button type="submit" class="btn btn-default">Registration</button>
+            </form>
+        </div>
+    </div>
+</div>
