@@ -17,7 +17,7 @@ class Db
             . $config['name'] . '', $config['user'], $config['password']);
     }
 
-    public function query($sql, $params = [])
+    public function query(string $sql, array $params = [])
     {
         $stmt = $this->db->prepare($sql);
         if (!empty($params)) {
@@ -30,14 +30,14 @@ class Db
         return $stmt;
     }
 
-    public function row($sql, $params = [])
+    public function row(string $sql, array $params = [])
     {
         $result = $this->query($sql, $params);
 
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function column($sql, $params = [])
+    public function column(string $sql, array $params = [])
     {
         $result = $this->query($sql, $params);
 
@@ -45,7 +45,7 @@ class Db
     }
 
 
-    public function all($table)
+    public function all(string $table)
     {
         $sql = "SELECT * FROM $table";
         $statement = $this->db->prepare($sql);
@@ -55,7 +55,7 @@ class Db
         return $results;
     }
 
-    public function getOne($table, $id = [])
+    public function getOne(string $table, int $id)
     {
         $sql = "SELECT * FROM $table WHERE id=:id";
         $statement = $this->db->prepare($sql);
@@ -66,7 +66,7 @@ class Db
         return $result;
     }
 
-    public function store($table, $data)
+    public function store(string $table, array $data)
     {
 
         $keys = array_keys($data);
@@ -77,7 +77,7 @@ class Db
         $statement->execute($data);
     }
 
-    public function update($table, $data)
+    public function update(string $table, array $data)
     {
         $fields = '';
 
@@ -91,7 +91,7 @@ class Db
         $statement->execute($data);
     }
 
-    public function delete($table, $id)
+    public function delete(string $table, int $id)
     {
         $sql = "DELETE FROM $table WHERE id=:id";
         $statement = $this->db->prepare($sql);

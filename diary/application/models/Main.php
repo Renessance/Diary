@@ -23,7 +23,7 @@ class Main extends Model
 
     }
 
-    public function store($post)
+    public function store(array $post)
     {
 
         $params = [
@@ -35,13 +35,13 @@ class Main extends Model
 
     }
 
-    public function show($id)
+    public function show(int $id)
     {
         $result = $this->db->getOne('tasks', $id);
         return $result;
     }
 
-    public function update($params)
+    public function update(array $params)
     {
 
         $this->db->query('UPDATE tasks SET title = :title WHERE id = :id',
@@ -49,20 +49,19 @@ class Main extends Model
 
     }
 
-    public function delete($id)
+    public function delete(int $id)
     {
         $result = $this->db->delete('tasks', $id);
 
     }
 
-    public function notId($id, $result)
+    public function notId(int $id, $result)
     {
 
         if ($id != $result['id']) {
-            throw new \Exception("id not found", 404);
+            throw new \Exception("id not found");
         }
 
     }
-
 
 }

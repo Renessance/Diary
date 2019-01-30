@@ -12,13 +12,13 @@ class View
 
     public $layout = 'default';
 
-    public function __construct($route)
+    public function __construct(array $route)
     {
         $this->route = $route;
         $this->path = $route['controller'] . '/' . $route['action'];
     }
 
-    public function render($title, $vars = [])
+    public function render(string $title, array $vars = [])
     {
         extract($vars);
         $path = 'application/views/' . $this->path . '.php';
@@ -30,7 +30,7 @@ class View
         }
     }
 
-    public function renderHtml($title, $vars = [])
+    public function renderHtml(string $title, array $vars = [])
     {
         extract($vars);
         $path = 'application/views/' . $this->path . '.html';
@@ -42,7 +42,7 @@ class View
         }
     }
 
-    public function redirect($url)
+    public function redirect(string $url)
     {
         header('location: /' . $url);
         exit;
@@ -53,7 +53,7 @@ class View
         exit(json_encode(['status' => $status, 'message' => $message]));
     }
 
-    public function location($url)
+    public function location(string $url)
     {
         exit(json_encode(['url' => $url]));
     }

@@ -28,7 +28,7 @@ class MainController extends Controller
         $this->view->render('Father page', $vars);
     }
 
-    public function MotherAction()
+    public function motherAction()
     {
         if (!empty($_POST)) {
             $this->model->store($_POST);

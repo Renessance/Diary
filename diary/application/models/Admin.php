@@ -8,7 +8,7 @@ use application\core\Model;
 class Admin extends Model
 {
 
-    public function loginValidate($post)
+    public function loginValidate(array $post)
     {
         $config = require 'application/config/admin.php';
         if ($config['email'] != $post['email'] or $config['password']
@@ -27,7 +27,7 @@ class Admin extends Model
         return $result;
     }
 
-    public function create($post)
+    public function create(array $post)
     {
 
         $params = [
@@ -39,7 +39,7 @@ class Admin extends Model
     }
 
 
-    public function validate($input, $post)
+    public function validate(array $input,array $post)
     {
         $rules = [
             'email' => [
@@ -72,7 +72,7 @@ class Admin extends Model
         return true;
     }
 
-    public function checkEmailExists($email)
+    public function checkEmailExists(string $email)
     {
         $params = [
             'email' => $email,
@@ -82,7 +82,7 @@ class Admin extends Model
     }
 
 
-    public function createUser($post)
+    public function createUser(array $post)
     {
 
         $params = [
@@ -94,19 +94,12 @@ class Admin extends Model
         $this->db->store('users', $params);
     }
 
-    public function updateUser($params)
-    {
-
-        $this->db->query('UPDATE users SET email = :email, login = :login, familyMembers = :familyMembers WHERE id = :id',
-            $params);
-    }
-
-    public function delete($id)
+    public function delete(int $id)
     {
         $this->db->delete('tasks', $id);
     }
 
-    public function deleteUser($id)
+    public function deleteUser(int $id)
     {
         $this->db->delete('users', $id);
 
@@ -118,20 +111,20 @@ class Admin extends Model
         return $result;
     }
 
-    public function show($id)
+    public function show(int $id)
     {
         $result = $this->db->getOne('tasks', $id);
         return $result;
     }
 
-    public function update($params)
+    public function update(array $params)
     {
 
         $this->db->query('UPDATE tasks SET title = :title, familyMembers = :familyMembers WHERE id = :id',
             $params);
     }
 
-    public function updateShow($params)
+    public function updateShow(array $params)
     {
 
         $this->db->query('UPDATE tasks SET title = :title  WHERE id = :id',

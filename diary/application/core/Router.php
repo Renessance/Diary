@@ -21,7 +21,7 @@ class Router
 
     }
 
-    public function add($route, $params)
+    public function add(string $route, array $params)
     {
         $route = preg_replace('/{([a-z]+):([^\}]+)}/', '(?P<\1>\2)', $route);
         $route = '#^' . $route . '$#';

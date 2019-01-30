@@ -8,7 +8,7 @@ use application\core\Controller;
 class AdminController extends Controller
 {
 
-    public function __construct($route)
+    public function __construct(array $route)
     {
         parent::__construct($route);
         $this->view->layout = 'admin';

@@ -14,7 +14,7 @@ abstract class Controller
 
     protected $acl;
 
-    public function __construct($route)
+    public function __construct(array $route)
     {
 
         $this->route = $route;
@@ -58,7 +58,7 @@ abstract class Controller
         
     }
 
-    public function isAcl($key)
+    public function isAcl(string $key)
     {
         return in_array($this->route['action'], $this->acl[$key]);
     }

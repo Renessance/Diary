@@ -8,7 +8,7 @@ use application\core\Model;
 class Account extends Model
 {
 
-    public function validate($input, $post)
+    public function validate(array $input,array $post)
     {
         $rules = [
             'email' => [
@@ -41,7 +41,7 @@ class Account extends Model
         return true;
     }
 
-    public function checkEmailExists($email)
+    public function checkEmailExists(string $email)
     {
         $params = [
             'email' => $email,
@@ -50,7 +50,7 @@ class Account extends Model
             $params);
     }
 
-    public function checkData($login, $password)
+    public function checkData(string $login, string $password)
     {
         $params = [
             'login' => $login,
@@ -64,7 +64,7 @@ class Account extends Model
     }
 
 
-    public function register($post)
+    public function register(array $post)
     {
 
         $params = [
@@ -76,7 +76,7 @@ class Account extends Model
         $this->db->store('users', $params);
     }
 
-    public function login($login)
+    public function login(string $login)
     {
         $params = [
             'login' => $login,
